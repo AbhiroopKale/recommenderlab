@@ -8,9 +8,9 @@ from algorithms.content_based import ContentBasedFiltering
 def create_app():
     app = Flask(__name__)
 
-    # Configure CORS - allow origins from env or default to all for dev
+    # Configure CORS - allow origins from env or default to all
     allowed_origin = os.environ.get("CORS_ORIGIN", "*")
-    CORS(app, resources={r"/api/*": {"origins": allowed_origin}})
+    CORS(app, resources={r"/*": {"origins": allowed_origin}}, supports_credentials=True)
 
     # Initialize data loader and algorithms
     data_loader = DataLoader()
